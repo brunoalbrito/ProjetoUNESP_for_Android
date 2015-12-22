@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">"ProjetoUNESP_for_Android "</string>
+    <string name="btnFAE">Frações Absorvidas por Energia</string>
+    <string name="btnFAIE">Frações Absorvidas por Intervalo de Energia</string>
+
+    <!--FAE-->
+    <string name="lblOrgao">Orgão Alvo:</string>
+</resources>
