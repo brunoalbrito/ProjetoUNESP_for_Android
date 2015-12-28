@@ -5,4 +5,8 @@
 
     <!--FAE-->
     <string name="lblOrgao">Orgão Alvo:</string>
+    <string name="lblEnergia">Energia(KeV)(1 à 4000)</string>
+    <string name="lblFAE">FAE(Kg^-1)</string>
+    <string name="ActivityInicio">Menu</string>
+    <string name="ActivityFAE">Distribuída entre Mamas</string>
 </resources>
