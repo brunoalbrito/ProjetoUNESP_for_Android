@@ -1,12 +1,16 @@
 <resources>
-    <string name="app_name">"ProjetoUNESP_for_Android "</string>
+    <string name="app_name">Projeto UNESP</string>
+    <string name="nome_projeto">Projeto UNESP</string>
     <string name="btnFAE">Frações Absorvidas por Energia</string>
     <string name="btnFAIE">Frações Absorvidas por Intervalo de Energia</string>
+
+    <string name="ActivityInicio">Menu</string>
+    <string name="ActivityFAE">Distribuída entre Mamas</string>
 
     <!--FAE-->
     <string name="lblOrgao">Orgão Alvo:</string>
     <string name="lblEnergia">Energia(KeV)(1 à 4000)</string>
     <string name="lblFAE">FAE(Kg^-1)</string>
-    <string name="ActivityInicio">Menu</string>
-    <string name="ActivityFAE">Distribuída entre Mamas</string>
+
+    <string name="btnConsutar">Consultar</string>
 </resources>
