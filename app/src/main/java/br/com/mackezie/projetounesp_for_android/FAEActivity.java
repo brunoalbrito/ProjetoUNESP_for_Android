@@ -12,6 +12,8 @@ import android.widget.*;
 
 import java.util.List;
 
+import br.com.mackenzie.projetounesp_for_android.dao.faeDao;
+
 
 public class FAEActivity extends AppCompatActivity {
 
@@ -39,7 +41,8 @@ public class FAEActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        abreouCriaBanco();
+        abreouCriaBanco();//chamando banco de dados
+
 
 
         setContentView(R.layout.activity_fae);
@@ -49,7 +52,7 @@ public class FAEActivity extends AppCompatActivity {
         txtEnergia = (EditText) findViewById(R.id.txtEnergia);//EditText
         txtFAE = (EditText) findViewById(R.id.txtFAE);//EditText
 
-        ArrayAdapter<String> adpOrgaos = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
+        ArrayAdapter<String> adpOrgaos = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
         adpOrgaos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adpOrgaos.addAll(names);
         spnOrgaos.setAdapter(adpOrgaos);
@@ -65,19 +68,7 @@ public class FAEActivity extends AppCompatActivity {
                 //bancoDados.execSQL("insert into Adrenais (valores) values ('"+DataBase.InserindoAdrenais(num)+"')");
 
                 //Toast.makeText(FAEActivity.this, ""+num+"", Toast.LENGTH_SHORT).show();
-
-                String sql = "select * from "+orgao+" where codigo_valores = "+valor+"";
-                Cursor cursor = bancoDados.rawQuery(sql, null);
-
-                txtFAE.setText(null);
-
-                if (cursor != null) {
-                        cursor.moveToFirst();
-                        txtFAE.setText(cursor.getString(1).toString());
-
-                }else{
-                    txtFAE.setText(null);
-                }
+                faeDao.Consultar(txtEnergia,txtFAE,orgao,bancoDados,FAEActivity.this);
             }
         });
     }
@@ -86,30 +77,35 @@ public class FAEActivity extends AppCompatActivity {
         try {
 
             //cria ou abre o Banco de dados
-            bancoDados = openOrCreateDatabase("projetounesp",MODE_WORLD_READABLE, null);
+            bancoDados = openOrCreateDatabase("projetounesp",MODE_PRIVATE, null);
 
 
             bancoDados.execSQL("drop table if exists Adrenais");
+            bancoDados.execSQL("drop table if exists Baco");
 
             bancoDados.execSQL("create table if not exists Adrenais(codigo_valores integer primary key autoincrement," +
-                        "valores text)");
+                    "valores text)");
+
+            bancoDados.execSQL("create table if not exists Baco(codigo_valores integer primary key autoincrement," +
+                    "valores text)");
 
 
-            String[] valores = {"0.00E+00","1.00E+00","2.00E+00","3.00E+00","4.00E+00"};
+            //String[] valores = {"0.00E+00","1.00E+00","2.00E+00","3.00E+00","4.00E+00"};
 
 
             int i;
-            for(i=0;i<5;i++){
+            for(i=0;i<60;i++){
                 //bancoDados.execSQL("insert into Adrenais (valores) values ('"+String.valueOf(valores[i])+"')");
-                bancoDados.execSQL("insert into Adrenais (valores) values ('"+DataBase.InserindoAdrenais(i)+"')");
+                bancoDados.execSQL("insert into Adrenais (valores) values ('"+ faeDao.InserindoAdrenais(i)+"')");
+                bancoDados.execSQL("insert into Baco (valores) values ('"+ faeDao.InserindoAdrenais(i)+"')");
             }
 
 
-                Toast.makeText(FAEActivity.this, "Banco criado com sucesso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(FAEActivity.this, "Banco criado com sucesso", Toast.LENGTH_SHORT).show();
 
 
-        } catch (SQLException e) {
-                Toast.makeText(FAEActivity.this, "Erro", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(FAEActivity.this, "Erro", Toast.LENGTH_SHORT).show();
         }
     }
 }
