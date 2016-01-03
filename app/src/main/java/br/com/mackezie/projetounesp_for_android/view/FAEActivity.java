@@ -1,8 +1,6 @@
-package br.com.mackezie.projetounesp_for_android;
+package br.com.mackezie.projetounesp_for_android.view;
 
 import android.annotation.TargetApi;
-import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -10,10 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
-import java.util.List;
+import br.com.mackezie.projetounesp_for_android.R;
+import br.com.mackezie.projetounesp_for_android.dao.faeDao;
 
-import br.com.mackenzie.projetounesp_for_android.dao.faeDao;
-
+import br.com.mackezie.projetounesp_for_android.modelo.Valores;
 
 public class FAEActivity extends AppCompatActivity {
 
@@ -62,13 +60,21 @@ public class FAEActivity extends AppCompatActivity {
         btnConsultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Valores valores = new Valores();
                 int valor = Integer.parseInt(txtEnergia.getText().toString());
                 String orgao = spnOrgaos.getSelectedItem().toString();
 
                 //bancoDados.execSQL("insert into Adrenais (valores) values ('"+DataBase.InserindoAdrenais(num)+"')");
 
                 //Toast.makeText(FAEActivity.this, ""+num+"", Toast.LENGTH_SHORT).show();
-                faeDao.Consultar(txtEnergia,txtFAE,orgao,bancoDados,FAEActivity.this);
+                faeDao.Consultar(txtEnergia, txtFAE, orgao, bancoDados, FAEActivity.this,valores);
+
+
+                faeDao.Consultar(txtEnergia, txtFAE, orgao, bancoDados, FAEActivity.this,valores);
+                txtFAE.setText(valores.getValores());
+
+
+
             }
         });
     }
