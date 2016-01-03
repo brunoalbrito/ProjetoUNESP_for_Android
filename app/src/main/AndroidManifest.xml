@@ -5,29 +5,26 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/nome_projeto"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:label="@string/nome_projeto">
+        android:theme="@style/AppTheme" >
 
-        <!--NÂO ESQUEÇA DE ELIMINAR A LINHA android:label="@string/app_name"-->
+        <!-- NÂO ESQUEÇA DE ELIMINAR A LINHA android:label="@string/app_name" -->
 
-        <!--AQUI TEMOS COMO MUDAR O NOME DA ACTIVITY-->
-        <activity
-            android:name=".view.MainActivity"
 
-            >
+        <!-- AQUI TEMOS COMO MUDAR O NOME DA ACTIVITY -->
+        <activity android:name=".view.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".view.FAEActivity"
-            android:label="@string/ActivityFAE"
-            >
+            android:label="@string/ActivityFAE" >
+        </activity>
+        <activity android:name=".view.FAIEActivity" >
         </activity>
     </application>
 

@@ -25,12 +25,27 @@ public class MainActivity extends AppCompatActivity {
         btnFAE = (Button) findViewById(R.id.btnFAE);
         btnFAIE = (Button) findViewById(R.id.btnFAIE);
 
-        btnFAE.setOnClickListener(new View.OnClickListener() {
+        //Insert Navigation Editor --> Tools -> Android...
+        findViewById(R.id.btnFAE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, FAEActivity.class));
+            }
+        });
+        findViewById(R.id.btnFAIE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, FAIEActivity.class));
+            }
+        });
+
+
+        /*btnFAE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,FAEActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 }
