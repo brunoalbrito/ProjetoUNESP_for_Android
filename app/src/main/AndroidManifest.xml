@@ -24,7 +24,8 @@
             android:name=".view.FAEActivity"
             android:label="@string/ActivityFAE" >
         </activity>
-        <activity android:name=".view.FAIEActivity" >
+        <activity android:name=".view.FAIEActivity"
+            android:label="@string/ActivityFAIE">
         </activity>
     </application>
 

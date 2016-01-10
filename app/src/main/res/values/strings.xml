@@ -5,12 +5,19 @@
     <string name="btnFAIE">Frações Absorvidas por Intervalo de Energia</string>
 
     <string name="ActivityInicio">Menu</string>
-    <string name="ActivityFAE">Distribuída entre Mamas</string>
+    <string name="ActivityFAE">Absorvidas por Energia</string>
+    <string name="ActivityFAIE">Intervalo de Tempo</string>
+
+
+
+    <string name="lblOrgao">Orgão Alvo:</string>
 
     <!--FAE-->
-    <string name="lblOrgao">Orgão Alvo:</string>
     <string name="lblEnergia">Energia(KeV)(1 à 4000)</string>
     <string name="lblFAE">FAE(Kg^-1)</string>
-
     <string name="btnConsutar">Consultar</string>
+
+    <!--FAIE-->
+    <string name="lblInicial">Energia Inicial (KeV)</string>
+    <string name="lblFinal">Energia Final (Kev)</string>
 </resources>
